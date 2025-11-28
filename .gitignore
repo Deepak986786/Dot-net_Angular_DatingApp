@@ -1,0 +1,29 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+bin/
+obj/
+
+API/.vs/
+API/*.user
+API/*.suo
+API/bin/
+API/obj/
+
+*/API/.vs/
+*/API/*.user
+*/API/*.suo
+*/API/bin/
+*/API/obj/
+
+# Angular / Node
+Client/node_modules/
+Client/dist/
+
+**/node_modules/
+**/dist/
+
+
+# General
+*.log
