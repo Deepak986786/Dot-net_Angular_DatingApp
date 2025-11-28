@@ -20,6 +20,7 @@ API/obj/
 # Angular / Node
 Client/node_modules/
 Client/dist/
+CLient/.angular
 
 **/node_modules/
 **/dist/
