@@ -1,14 +1,13 @@
 ﻿using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class MembersController : ControllerBase
+    [Authorize]
+    public class MembersController : BaseApiController
     {
         private readonly AppDbContext _context;
 
@@ -16,7 +15,7 @@ namespace API.Controllers
         {
             _context = context;
         }
-
+        //[AllowAnonymous] to allow anonymous access to all users on this endpoint
         [HttpGet]
         public async Task<ActionResult<List<AppUser>>> GetMembers()
         {
@@ -27,7 +26,7 @@ namespace API.Controllers
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetMemberById(string Id)
         {
-            var member = await _context.Users.FirstOrDefaultAsync(x => x.Id == Id);
+            var member = await _context.Users.FirstOrDefaultAsync(x => x.Id.ToString() == Id);
             return Ok(member);
         }
     }
